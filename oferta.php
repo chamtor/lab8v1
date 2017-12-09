@@ -21,7 +21,7 @@ session_unset();
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="http://www.lukasz-zdunowski.com.pl/lab8">Strona głowna</a>
+  <a href="http://www.lukasz-zdunowski.com.pl/lab8x">Strona głowna</a>
   <a href="./kontakt.php">Kontakt</a>
   <a href="./mapa.php">Jak do nas dotrzeć</a>
   <a href="./oferta.php">Oferta</a>
