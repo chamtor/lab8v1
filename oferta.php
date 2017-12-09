@@ -34,6 +34,8 @@ session_unset();
 
 <div id="srodek">
 
+  <h1> Nasza strone oferuje oferty xyz...</h1>
+
 </div>
 
 <script>

@@ -6,7 +6,7 @@ session_unset();
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"pl-PL\">
 <head>
     <meta http-equiv="refresh" content="1000" /> 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
     <script type="text/javascript" ></script>
       
     <title>Zdunowski</title>
@@ -15,7 +15,7 @@ session_unset();
 </head>
 
 <body>
-<div id="naglowek">
+<div class="naglowek">
 	<img id="zdjecieTlo" src="img.jpg"></img>
 </div>
 
