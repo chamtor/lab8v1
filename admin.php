@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"pl-PL\">
@@ -7,13 +7,15 @@ session_start();
     <meta http-equiv="refresh" content="1000" /> 
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" ></script>
-      
+      <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
+
     <title>Zdunowski</title>
 
 
 </head>
 
 <body>
+<textarea name="content" id="editor"></textarea>
 
 <div id="naglowek">
   <img id="zdjecieTlo" src="img.jpg"></img>
@@ -27,8 +29,7 @@ session_start();
   <a href="./mapa.php">Jak do nas dotrzeć</a>
   <a href="./oferta.php">Oferta</a>
   <a href="./chatbot.php">Chatbot</a>
-    <a href="./admin.php">Panel Administratora</a>
-
+  <a href="./logout.php">Wyloguj</a>
 
 
 
@@ -39,52 +40,33 @@ session_start();
 
 <div id="srodek">
 
-  <form  method="POST">
-      <input type="text" placeholder="O co chcesz zapytać?" name="zapytanie">
-      <input type="submit" value="Submit">
+  <form  method="POST" action="weryfikuj.php">
+      Login:<input type="text" name="user"><br><br>
+      Hasło:<input type="password" name="pass">
+
+      <input type="submit" value="Zaloguj się">
   </form>
 
 
 
 
 <?php 
-$pytanie = $_POST['zapytanie'];
+/*$pytanie = $_POST['zapytanie'];
 $link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8'); // połączenie z BD – wpisać swoje parametry !!!
 if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); } // obsługa błędu połączenia z BD
 mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
-
-
-$q = "SELECT * FROM chat WHERE pytanie='$pytanie'";
-$sql = mysqli_query($link, $q) or die (mysqli_error($link));
-
-$row_cnt = mysqli_num_rows($sql);
-
-
-if($row_cnt >=1){
-   // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
-    if ($row = $sql->fetch_assoc()) {                                           
-       $asd= $row['odpowiedz'];
-    }
-      $_SESSION['odp'] = $asd;
-      echo $asd;
-    }else
-    {
-      $_SESSION['brak'] = "BRAK odpowiedzi";
-      echo $_SESSION['brak'];
-    }
-
-
-
-/*
-if($pytanie=$asd){
-    echo $asd;
-}else{
-  echo $pytanie;
-}*/
+*/
 ?>
 
 </div>
 </div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
 <script>
 function openNav() {
