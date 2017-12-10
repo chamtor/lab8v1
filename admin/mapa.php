@@ -13,9 +13,10 @@
 
 <body>
 
+
+
 <div id="naglowek">
      <img id="zdjecieTlo" src="img.jpg"></img>
-
 </div>
     <div id="main">
 

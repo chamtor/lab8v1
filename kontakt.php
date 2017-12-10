@@ -49,20 +49,19 @@ if(!$link) {
 }//obsługa błędu połączenia z BD
 mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
 
-$result = mysqli_query($link, "SELECT * FROM kontakt"); //
 
-while ($wiersz = mysqli_fetch_array ($result))
-{      
-    $nazwa = $wiersz['nazwa'];
-    $adres = $wiersz['adres'];
-    $telefon = $wiersz['telefon'];
-    $email = $wiersz['email'];
-}
+$q = "SELECT * FROM informacje WHERE punkt='kontakt'";
+$sql = mysqli_query($link, $q) or die (mysqli_error($link));
+$row_cnt = mysqli_num_rows($sql);
 
-echo $nazwa.'<br>';
-echo $adres.'<br>';
-echo $telefon.'<br>';
-echo $email.'<br>';
+if($row_cnt >=1){
+   // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
+    if ($row = $sql->fetch_assoc()) {                                           
+       $asd= $row['opis'];
+    }
+  }
+    echo '<h1>'.$asd.'</h1>'
+
 
 ?>
 

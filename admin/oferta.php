@@ -32,7 +32,7 @@
 <!--<span onclick="openNav()">open</span>-->
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;  Menu</span>
 
-
+<form>
 <textarea name="content" id="editor">
 <div id="srodek">
 
@@ -40,6 +40,9 @@
 
 </div>
 </textarea>
+  <input type="submit" name="Zapisz">
+
+</form>
 
 </div>
 <script>

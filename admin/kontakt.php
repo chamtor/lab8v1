@@ -35,7 +35,8 @@
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;  Menu</span>
 
 
- <textarea name="content" id="editor">
+<form>
+<textarea name="content" id="editor">
 
 <div id="srodek">
 
@@ -65,6 +66,8 @@ echo $email.'<br>';
 
 ?>
 </textarea>
+  <input type="submit" name="Zapisz">
+</form>
 
 </div>
 
