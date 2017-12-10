@@ -8,7 +8,10 @@ session_unset();
     <meta http-equiv="refresh" content="1000" /> 
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript"></script>
-      
+         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}</script>
     <title>Zdunowski</title>
 
 
@@ -30,6 +33,7 @@ session_unset();
   <a href="./oferta.php">Oferta</a>
   <a href="./chatbot.php">Chatbot</a>
     <a href="./admin.php">Panel Administratora</a>
+    <a id="google_translate_element"></a>
 
 </div>
 

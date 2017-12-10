@@ -62,11 +62,6 @@ class="sidenav" >
 <input type="submit" name="Zapisz">
 </form>
 
-
-
-
-
-
 <?php
 $sGlowna = $_POST['glowna'];
 $q= "UPDATE informacje set opis='$sGlowna' WHERE punkt='sglowna'";
