@@ -41,8 +41,6 @@ session_unset();
 <div id="srodek">
 
 <?php
-
-
 $link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8');//połączenie z BD – wpisać swoje parametry !!!
 if(!$link) { 
     echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); 

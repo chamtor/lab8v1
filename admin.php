@@ -15,8 +15,6 @@
 </head>
 
 <body>
-<textarea name="content" id="editor"></textarea>
-
 <div id="naglowek">
   <img id="zdjecieTlo" src="img.jpg"></img>
 </div>
@@ -29,7 +27,7 @@
   <a href="./mapa.php">Jak do nas dotrzeć</a>
   <a href="./oferta.php">Oferta</a>
   <a href="./chatbot.php">Chatbot</a>
-  <a href="./logout.php">Wyloguj</a>
+  <a href="./admin.php">Panel Administratora</a>
 
 
 
@@ -41,7 +39,7 @@
 <div id="srodek">
 
   <form  method="POST" action="weryfikuj.php">
-      Login:<input type="text" name="user"><br><br>
+      Login:<input type="text" name="user"><br>
       Hasło:<input type="password" name="pass">
 
       <input type="submit" value="Zaloguj się">

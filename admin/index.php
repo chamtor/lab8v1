@@ -1,6 +1,7 @@
 <?php
-session_start();
-session_unset()
+$link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8'); // połączenie z BD – wpisać swoje parametry !!!
+if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); } // obsługa błędu połączenia z BD
+mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
 ?>
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"pl-PL\">
@@ -21,8 +22,8 @@ session_unset()
 	   <img id="zdjecieTlo" src="img.jpg"></img>
   </div>
 <div id="main"> 
-
-  <div id="mySidenav" class="sidenav" >
+  <div id="mySidenav" 
+class="sidenav" >
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="http://www.lukasz-zdunowski.com.pl/lab8x/admin/index.php">Strona głowna</a>
     <a href="kontakt.php">Kontakt</a>
@@ -37,44 +38,39 @@ session_unset()
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
 
 
-<form method="POST" action="save.php">
-<textarea name="content" id="editor">
 
+<form method="POST">
+  <textarea name="glowna" id="editor">
 
-  <div id="srodek">
+    <div id="srodek">
 
-<?php
+        <?php
+        $q = "SELECT * FROM informacje WHERE punkt='sglowna'";
+        $sql = mysqli_query($link, $q) or die (mysqli_error($link));
+        $row_cnt = mysqli_num_rows($sql);
 
-$link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8'); // połączenie z BD – wpisać swoje parametry !!!
-if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); } // obsługa błędu połączenia z BD
-mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
-
-$q = "SELECT * FROM informacje WHERE punkt='sglowna'";
-$sql = mysqli_query($link, $q) or die (mysqli_error($link));
-$row_cnt = mysqli_num_rows($sql);
-
-if($row_cnt >=1){
-   // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
-    if ($row = $sql->fetch_assoc()) {                                           
-       $asd= $row['opis'];
-    }
-  }
-    echo '<h1>'.$asd.'</h1>'
-?>
-  </div>
-</textarea>
-
-
-  <input type="submit" name="Zapisz">
-
+        if($row_cnt >=1){
+           // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
+            if ($row = $sql->fetch_assoc()) {                                           
+               $asd= $row['opis'];
+            }
+          }
+            echo '<h1>'.$asd.'</h1>'
+        ?>
+    </div>
+  </textarea>
+<input type="submit" name="Zapisz">
 </form>
 
+
+
+
+
+
 <?php
-  
-$tekst = $_GET['content'];
-
-echo $tekst;
-
+$sGlowna = $_POST['glowna'];
+$q= "UPDATE informacje set opis='$sGlowna' WHERE punkt='sglowna'";
+$sql = mysqli_query($link, $q) or die (mysqli_error($link));
 ?>
 
 </div>

@@ -27,7 +27,7 @@ session_start();
   <a href="./mapa.php">Jak do nas dotrzeć</a>
   <a href="./oferta.php">Oferta</a>
   <a href="./chatbot.php">Chatbot</a>
-    <a href="./admin.php">Panel Administratora</a>
+  <a href="./admin.php">Panel Administratora</a>
 
 
 
@@ -60,18 +60,19 @@ $sql = mysqli_query($link, $q) or die (mysqli_error($link));
 $row_cnt = mysqli_num_rows($sql);
 
 
-if($row_cnt >=1){
+if(!$sql)
+{
+  echo "A Ty"." ".$pytanie."?";
+} 
+else{
    // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
     if ($row = $sql->fetch_assoc()) {                                           
        $asd= $row['odpowiedz'];
     }
       $_SESSION['odp'] = $asd;
       echo $asd;
-    }else
-    {
-      $_SESSION['brak'] = "BRAK odpowiedzi";
-      echo $_SESSION['brak'];
-    }
+}
+
 
 
 

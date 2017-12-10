@@ -1,4 +1,10 @@
-
+<?php
+$link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8');//połączenie z BD – wpisać swoje parametry !!!
+if(!$link) { 
+    echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); 
+}//obsługa błędu połączenia z BD
+mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
+?>
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"pl-PL\">
 <head>
@@ -35,41 +41,44 @@
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;  Menu</span>
 
 
-<form>
-<textarea name="content" id="editor">
+<form method="POST">
+<textarea name="kont" id="editor">
 
 <div id="srodek">
 
 <?php
+$q = "SELECT * FROM informacje WHERE punkt='kontakt'";
+$sql = mysqli_query($link, $q) or die (mysqli_error($link));
+$row_cnt = mysqli_num_rows($sql);
 
-
-$link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8');//połączenie z BD – wpisać swoje parametry !!!
-if(!$link) { 
-    echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); 
-}//obsługa błędu połączenia z BD
-mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
-
-$result = mysqli_query($link, "SELECT * FROM kontakt"); //
-
-while ($wiersz = mysqli_fetch_array ($result))
-{      
-    $nazwa = $wiersz['nazwa'];
-    $adres = $wiersz['adres'];
-    $telefon = $wiersz['telefon'];
-    $email = $wiersz['email'];
-}
-
-echo $nazwa.'<br>';
-echo $adres.'<br>';
-echo $telefon.'<br>';
-echo $email.'<br>';
-
+if($row_cnt>=0){
+   // $rezultat = mysqli_query($link, $sql) or die(mysqli_error($link));
+    if ($row = $sql->fetch_assoc()) {                                           
+       $asd= $row['opis'];
+    }
+  }
+    echo '<h1>'.$asd.'</h1>'
 ?>
+
 </textarea>
+
   <input type="submit" name="Zapisz">
 </form>
 
 </div>
+
+<?php
+$sKontakt = $_POST['kont'];
+$q= "UPDATE informacje set opis='$sKontakt' WHERE punkt='kontakt'";
+$sql = mysqli_query($link, $q) or die (mysqli_error($link));
+
+$q2= "UPDATE chat set odpowiedz='$sKontakt' WHERE pytanie='kontakt'";
+$sql = mysqli_query($link, $q2) or die (mysqli_error($link));
+
+$q2= "UPDATE chat set odpowiedz='$sKontakt' WHERE pytanie='telefon'";
+$sql = mysqli_query($link, $q2) or die (mysqli_error($link));
+?>
+
 
 </div>
 <script>
