@@ -52,18 +52,68 @@ session_start();
 
 
 <?php 
-$pytanie = $_POST['zapytanie'];
+//$pytanie = $_POST['zapytanie'];
 $link = mysqli_connect('lukasz-zdunowski.com.pl', '25509958_lab8' ,'zaq12wsx', '25509958_lab8'); // połączenie z BD – wpisać swoje parametry !!!
 if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); } // obsługa błędu połączenia z BD
 mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
-
-
-$q = "SELECT * FROM chat WHERE pytanie='$pytanie'";
+$q = "SELECT * FROM chat WHERE pytanie='".$_POST['zapytanie']."';";
 $sql = mysqli_query($link, $q) or die (mysqli_error($link));
 
-$row_cnt = mysqli_num_rows($sql);
+if(isset($_POST['zapytanie'])) {
+$row = mysqli_fetch_array($sql);
+if($row) {
+    $odp = $row['odpowiedz'];
+  
+    echo $odp;
+}else{
+  echo "A Ty"." ".$_POST['zapytanie']."?";
+}}
+?> 
 
-if($sql){
+
+<?php
+/*$q = "SELECT * FROM chat WHERE pytanie='$pytanie'";
+$wynik = mysqli_query($link, $q) or die (mysqli_error($link));
+
+if(isset($_POST['zapytanie'])){
+if($wynik=$pytanie){
+ if(($wiersz = mysqli_fetch_assoc($wynik)))  { 
+  $wynik2 = mysqli_query($link, $wiersz['odpowiedz']);
+  echo $wynik2;  
+  }
+}
+else{
+  echo "sdada";
+}
+}
+*/
+
+
+
+
+
+
+
+
+/* if($link!=null){
+$wynik = mysqli_query($link, $q) or die (mysqli_error($link));                                                
+if(($wiersz = mysqli_fetch_assoc($wynik))!=null){                                     
+    $wynik2 = mysqli_query($link, $wiersz['odpowiedz']);                              
+        if($wynik2!=false){
+          $wiersz2 = mysqli_fetch_row($wynik2);                                         
+         echo "A Ty"." ".$pytanie."?";
+
+}
+  else{  
+   echo $wiersz2['odpowiedz'];                                                                           
+    }
+  }
+  else{                                                                                 
+    echo "<p>Niestety nie umiem odpowiedzieć na to pytanie!</p>";                  
+  }
+}*/
+
+/*if($row_cnt>=1){
 if ($row = $sql->fetch_assoc()) {                                           
        $asd= $row['odpowiedz'];
     }
@@ -71,7 +121,7 @@ if ($row = $sql->fetch_assoc()) {
 } 
 else{
     echo "A Ty"." ".$pytanie."?";
-}
+}*/
 
 ?>
 
