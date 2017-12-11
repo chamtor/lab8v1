@@ -11,7 +11,7 @@
 	if(!$rekord) //Jeśli brak, to nie ma użytkownika o podanym loginie
 	{
 			mysqli_close($link); // zamknięcie połączenia z BD
-			echo "Brak użytkownika o takim loginie !"; // UWAGA nie wyświetlamy takich podpowiedzi dla hakerów
+			echo "Error !"; // UWAGA nie wyświetlamy takich podpowiedzi dla hakerów
 		}
 		else
 		{ // Jeśli $rekord istnieje
@@ -24,7 +24,7 @@
 		else
 		{
 			mysqli_close($link);
-			echo "Błąd w haśle !"; // UWAGA nie wyświetlamy takich podpowiedzi dla hakerów
+			echo "Error !"; // UWAGA nie wyświetlamy takich podpowiedzi dla hakerów
 		}
 	}
 ?>
